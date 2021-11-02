@@ -1,0 +1,366 @@
+{
+    "schema": {
+        "crud_objects": {
+            "drives": {
+                "operations": {
+                    "drives_get": {
+                        "method": "get",
+                        "call": {
+                            "mode": "normal",
+                            "path": "/drive/v3/drives",
+                            "post_processing": "child_tables"
+                        },
+                        "query_parameters": {
+                            "useDomainAdminAccess":true,
+                            "fields": "*"
+                        },
+                        "processing_options": {
+                            "output_field": "drives"
+                        }
+                    }
+                },
+                "key": "id",
+                "resources": {
+                    "kind": "string*",
+                    "id": "string*",
+                    "name": "string*",
+                    "themeId": "string*",
+                    "colorRgb": "string*",
+                    "backgroundImageFile": {
+                      "id": "_:string*",
+                      "xCoordinate": "_:string*",
+                      "yCoordinate": "_:string*",
+                      "width": "_:string*"
+                    },
+                    "backgroundImageLink": "string*",
+                    "capabilities": {
+                      "canAddChildren": "_:boolean*",
+                      "canChangeCopyRequiresWriterPermissionRestriction": "_:boolean*",
+                      "canChangeDomainUsersOnlyRestriction": "_:boolean*",
+                      "canChangeDriveBackground": "_:boolean*",
+                      "canChangeDriveMembersOnlyRestriction": "_:boolean*",
+                      "canComment": "_:boolean*",
+                      "canCopy": "_:boolean*",
+                      "canDeleteChildren": "_:boolean*",
+                      "canDeleteDrive": "_:boolean*",
+                      "canDownload": "_:boolean*",
+                      "canEdit": "_:boolean*",
+                      "canListChildren": "_:boolean*",
+                      "canManageMembers": "_:boolean*",
+                      "canReadRevisions": "_:boolean*",
+                      "canRename": "_:boolean*",
+                      "canRenameDrive": "_:boolean*",
+                      "canShare": "_:boolean*",
+                      "canTrashChildren": "_:boolean*"
+                    },
+                    "createdTime": "string*",
+                    "hidden": "boolean*",
+                    "restrictions": {
+                      "adminManagedRestrictions": "_:boolean*",
+                      "copyRequiresWriterPermission": "_:boolean*",
+                      "domainUsersOnly":"_:boolean*",
+                      "driveMembersOnly": "_:boolean*"
+                    }
+                  }
+            },
+            "files": {
+                "operations": {
+                    "files_get": {
+                        "method": "get",
+                        "call": {
+                            "mode": "iteration",
+                            "table": "drives",
+                            "iterator": "id",
+                            "path": "/drive/v3/files",
+                            "base": {
+                                "drive_id": "{iterator}"
+                            },
+                            "post_processing": "child_tables"
+                        },
+                        "query_parameters": {
+                            "useDomainAdminAccess":true,
+                            "fields": "*",
+                            "driveId": "{iterator}",
+                            "includePermissionsForView": "published",
+                            "supportsAllDrives": true,
+                            "includeItemsFromAllDrives":true,
+                            "corpora": "drive"
+                        },
+                        "processing_options": {
+                            "output_field": "drives"
+                        }
+                    }
+                },
+                "key": "id",
+                "resources": {
+                    "kind": "string*",
+                    "id": "string*",
+                    "name": "string*",
+                    "mimeType": "string*",
+                    "description": "string*",
+                    "starred": "boolean*",
+                    "trashed": "boolean*",
+                    "explicitlyTrashed": "boolean*",
+                    "trashingUser": {
+                      "kind": "_:string*",
+                      "displayName": "_:string*",
+                      "photoLink": "_:string*",
+                      "me": "_:boolean*",
+                      "permissionId": "_:string*",
+                      "emailAddress": "_:string*"
+                    },
+                    "trashedTime": "string*",
+                    "parents": [
+                      "string*"
+                    ],
+                    "spaces": [
+                      "string*"
+                    ],
+                    "version": "string*",
+                    "webContentLink": "string*",
+                    "webViewLink": "string*",
+                    "iconLink": "string*",
+                    "hasThumbnail": "boolean*",
+                    "thumbnailLink": "string*",
+                    "thumbnailVersion": "string*",
+                    "viewedByMe": "boolean*",
+                    "viewedByMeTime": "string*",
+                    "createdTime": "string*",
+                    "modifiedTime": "string*",
+                    "modifiedByMeTime": "string*",
+                    "modifiedByMe": "boolean*",
+                    "sharedWithMeTime": "string*",
+                    "sharingUser": {
+                      "kind": "_:string*",
+                      "displayName": "_:string*",
+                      "photoLink": "_:string*",
+                      "me": "_:boolean*",
+                      "permissionId": "_:string*",
+                      "emailAddress": "_:string*"
+                    },
+                    "owners": [
+                      {
+                        "kind": "_:string*",
+                        "displayName": "_:string*",
+                        "photoLink": "_:string*",
+                        "me": "_:boolean*",
+                        "permissionId": "_:string*",
+                        "emailAddress": "_:string*"
+                      }
+                    ],
+                    "teamDriveId": "string*",
+                    "driveId": "string*",
+                    "lastModifyingUser": {
+                      "kind": "_:string*",
+                      "displayName": "_:string*",
+                      "photoLink": "_:string*",
+                      "me": "_:boolean*",
+                      "permissionId": "_:string*",
+                      "emailAddress": "_:string*"
+                    },
+                    "shared": "boolean*",
+                    "ownedByMe": "boolean*",
+                    "capabilities": {
+                      "canAddChildren": "_:boolean*",
+                      "canAddFolderFromAnotherDrive": "_:boolean*",
+                      "canAddMyDriveParent": "_:boolean*",
+                      "canChangeCopyRequiresWriterPermission": "_:boolean*",
+                      "canChangeSecurityUpdateEnabled": "_:boolean*",
+                      "canChangeViewersCanCopyContent": "_:boolean*",
+                      "canComment": "_:boolean*",
+                      "canCopy": "_:boolean*",
+                      "canDelete": "_:boolean*",
+                      "canDeleteChildren": "_:boolean*",
+                      "canDownload": "_:boolean*",
+                      "canEdit": "_:boolean*",
+                      "canListChildren": "_:boolean*",
+                      "canModifyContent": "_:boolean*",
+                      "canModifyContentRestriction": "_:boolean*",
+                      "canMoveChildrenOutOfTeamDrive": "_:boolean*",
+                      "canMoveChildrenOutOfDrive": "_:boolean*",
+                      "canMoveChildrenWithinTeamDrive": "_:boolean*",
+                      "canMoveChildrenWithinDrive": "_:boolean*",
+                      "canMoveItemIntoTeamDrive": "_:boolean*",
+                      "canMoveItemOutOfTeamDrive": "_:boolean*",
+                      "canMoveItemOutOfDrive": "_:boolean*",
+                      "canMoveItemWithinTeamDrive": "_:boolean*",
+                      "canMoveItemWithinDrive": "_:boolean*",
+                      "canMoveTeamDriveItem": "_:boolean*",
+                      "canReadRevisions": "_:boolean*",
+                      "canReadTeamDrive": "_:boolean*",
+                      "canReadDrive": "_:boolean*",
+                      "canRemoveChildren": "_:boolean*",
+                      "canRemoveMyDriveParent": "_:boolean*",
+                      "canRename": "_:boolean*",
+                      "canShare": "_:boolean*",
+                      "canTrash": "_:boolean*",
+                      "canTrashChildren": "_:boolean*",
+                      "canUntrash": "_:boolean*"
+                    },
+                    "viewersCanCopyContent": "boolean*",
+                    "copyRequiresWriterPermission": "boolean*",
+                    "writersCanShare": "boolean*",
+                    "permissions": [
+                        {
+                            "kind": "_:string*",
+                            "id": "_:string*",
+                            "type": "_:string*",
+                            "emailAddress": "_:string*",
+                            "domain": "_:string*",
+                            "role": "_:string*",
+                            "view": "_:string*",
+                            "allowFileDiscovery": "_:boolean*",
+                            "displayName": "_:string*",
+                            "photoLink": "_:string*",
+                            "expirationTime": "_:string*",
+                            "teamDrivePermissionDetails": [
+                              {
+                                "teamDrivePermissionType": "_:string*",
+                                "role": "_:string*",
+                                "inheritedFrom": "_:string*",
+                                "inherited": "_:boolean*"
+                              }
+                            ],
+                            "permissionDetails": [
+                              {
+                                "permissionType": "_:string*",
+                                "role": "_:string*",
+                                "inheritedFrom": "_:string*",
+                                "inherited": "_:boolean*"
+                              }
+                            ],
+                            "deleted": "_:boolean*"
+                          }
+                    ],
+                    "permissionIds": [
+                      "string*"
+                    ],
+                    "hasAugmentedPermissions": "boolean*",
+                    "folderColorRgb": "string*",
+                    "originalFilename": "string*",
+                    "fullFileExtension": "string*",
+                    "fileExtension": "string*",
+                    "md5Checksum": "string*",
+                    "size": "string*",
+                    "quotaBytesUsed": "string*",
+                    "headRevisionId": "string*",
+                    "contentHints": {
+                      "thumbnail": {
+                        "image": "_:string*",
+                        "mimeType": "_:string*"
+                      },
+                      "indexableText": "string*"
+                    },
+                    "imageMediaMetadata": {
+                      "width": "_:number*",
+                      "height": "_:number*",
+                      "rotation": "_:number*",
+                      "location": {
+                        "latitude": "_:string*",
+                        "longitude": "_:string*",
+                        "altitude": "_:string*"
+                      },
+                      "time": "_:string*",
+                      "cameraMake": "_:string*",
+                      "cameraModel": "_:string*",
+                      "exposureTime": "_:string*",
+                      "aperture": "_:string*",
+                      "flashUsed": "_:boolean*",
+                      "focalLength": "_:string*",
+                      "isoSpeed": "_:number*",
+                      "meteringMode": "_:string*",
+                      "sensor": "_:string*",
+                      "exposureMode": "_:string*",
+                      "colorSpace": "_:string*",
+                      "whiteBalance": "_:string*",
+                      "exposureBias": "_:string*",
+                      "maxApertureValue": "_:string*",
+                      "subjectDistance": "_:number*",
+                      "lens": "_:string*"
+                    },
+                    "videoMediaMetadata": {
+                      "width": "_:number*",
+                      "height": "_:number*",
+                      "durationMillis": "_:string*"
+                    },
+                    "isAppAuthorized": "_:boolean*",
+                    "shortcutDetails": {
+                      "targetId": "_:string*",
+                      "targetMimeType": "_:string*",
+                      "targetResourceKey": "_:string*"
+                    },
+                    "contentRestrictions": [
+                      {
+                        "readOnly": "_:boolean*",
+                        "reason": "_:string*",
+                        "restrictingUser": {
+                          "kind": "_:string*",
+                          "displayName": "_:string*",
+                          "photoLink": "_:string*",
+                          "me": "_:boolean*",
+                          "permissionId": "_:string*",
+                          "emailAddress": "_:string*"
+                        },
+                        "restrictionTime": "_:string*",
+                        "type": "_:string*"
+                      }
+                    ],
+                    "resourceKey": "_:string*",
+                    "linkShareMetadata": {
+                      "securityUpdateEligible": "_:boolean*",
+                      "securityUpdateEnabled": "_:boolean*"
+                    }
+                  }
+            }
+        }
+    },
+    "rest": {
+        "config": {
+            "baseUrl": "https://www.googleapis.com",
+            "get": {
+                "maxPageCount": 500,
+                "query_parameters": {
+                    "customer": "my_customer"
+                }
+            },
+            "authentication": "certificate",
+            "call_handling": "google",
+            "test_connection": {
+                "url": "/drive/v3/drives"
+            }
+        },
+        "authOptions": {
+            "scopes": [
+                "https://www.googleapis.com/auth/drive"
+            ],
+            "type": "signed-jwt",
+            "authUrl": "https://www.googleapis.com/oauth2/v4/token",
+            "postData": {
+                "grant_type": "urn:ietf:params:oauth:grant-type:jwt-bearer",
+                "assertion": {
+                    "name": "JWT"
+                }
+            },
+            "JWT": {
+                "iss": {
+                    "name": "clientId"
+                },
+                "scope": {
+                    "name": "scope"
+                },
+                "aud": {
+                    "name": "endpoint"
+                },
+                "exp": {
+                    "name": "oneHour"
+                },
+                "iat": {
+                    "name": "now"
+                },
+                "sub": {
+                    "name": "tenantId"
+                }
+            }
+        }
+    }
+}
